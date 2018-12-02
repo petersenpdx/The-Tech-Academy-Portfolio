@@ -41,20 +41,17 @@ namespace C_Sharp_Boolean_Logic
             Console.WriteLine("What is your age?");
             string Age = Console.ReadLine();
             int AgeInt = Convert.ToInt16(Age);
-            bool AgeB = AgeInt > 15;
-
-            Console.WriteLine("Have you ever had a DUI before (answer True/False?");
+            
+            Console.WriteLine("Have you ever had a DUI before (answer True/False)?");
             string DUI = Console.ReadLine();
-            bool TrueOrFalse = Convert.ToBoolean(DUI);
+           
 
             Console.WriteLine("How many spending tickets do you have?");
             string Tickets = Console.ReadLine();
             int SpeedingTickets = Convert.ToInt16(Tickets);
-            bool TicketsB = SpeedingTickets <= 3;
-
-
+            
             Console.WriteLine("Qualified?");
-            Console.WriteLine(AgeB && TrueOrFalse != true && TicketsB);
+            Console.WriteLine(AgeInt > 15 && DUI =="True" && SpeedingTickets <= 3);
             Console.ReadLine();
 
 
