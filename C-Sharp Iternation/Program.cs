@@ -53,7 +53,7 @@ class Program
         //}
         //Console.ReadLine();
 
-        //***********************************EXCERSIZE 2. & 3.****************************************************
+        //***********************************EXERCIZE 2. & 3.****************************************************
 
         //int[] data = { 5, 7, 26, 4, 5, 1, 70, 30, 22, 14, 16, 18 };
 
@@ -67,7 +67,7 @@ class Program
         //}
         //Console.ReadLine();
 
-        //****************************** EXCERSIZE 4. & 5.***************************************************
+        //****************************** EXERCISE 4. & 5.***************************************************
 
         //int[] guess = { 2, 3, 4, 5, 6, 10 };
 
@@ -78,7 +78,7 @@ class Program
         //}
 
 
-        ////**************************************************EXCERZISE 6., 7. & 8.********************************************
+        ////**************************************************EXERCIZE 6., 7. & 8.********************************************
         //List<string> planets = new List<string>() {"Mars", "Jupiter","Venus", "Neptune"} ;
 
         //Console.WriteLine("Select a planet to look for in the index");
@@ -101,7 +101,7 @@ class Program
         //}
 
 
-        //  ***************************************************** EXCERSIZE 9. & 10.********************************************
+        //  ***************************************************** EXERCISE 9. & 10.********************************************
         //List<string> metals = new List<string>() { "Gold", "Silver", "Platnuim", "Titanuim", "Gold", "Iron", "Iron" };
 
         //Console.WriteLine("Select a metal to look for in the index");
@@ -148,6 +148,8 @@ class Program
         //    Console.ReadLine();
 
         //}
+
+        //************************************************************EXERCIZE 11. *******************************************************
         List<string> clothes = new List<string>() { "Nike", "Pendleton", "Nike", "Adidas", "Patagonia", "Fjallraven", "Fjallraven" };
 
         foreach (string cloth in clothes)
