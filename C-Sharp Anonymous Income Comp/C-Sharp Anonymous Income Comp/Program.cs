@@ -73,6 +73,16 @@ namespace C_Sharp_Anonymous_Income_Comp
             bool TrueOrFalse = Person1Salery > Person2Salery;
             Console.WriteLine(TrueOrFalse);
             Console.ReadLine();
+
+            Console.WriteLine("Annual Salary Person 1:");
+            double Person1ASalery = (HourlyRate * HoursWorked)*52;
+            Console.WriteLine(Person1ASalery);
+            Console.ReadLine();
+
+            Console.WriteLine("Weekly Salary Person 2:");
+            double Person2ASalery = (HourlyRate2 * HoursWorked2)*52;
+            Console.WriteLine(Person2ASalery);
+            Console.ReadLine();
         }
     }
 }
