@@ -22,6 +22,7 @@ using System.Collections.Generic;
 //text to search for in the List. Create a loop that iterates through the list and then displays the 
 // the indices of the array that contain matching text on the screen.
 //10. Add code to that above loop that tells a user if they put in text that isn’t in the List.
+
 //11. Create a List of strings that has at least two identical strings in the List. Create a foreach loop that evaluates 
 //each item in the list, and displays a message showing the string and whether or not it has already appeared in the list.
 
@@ -53,7 +54,7 @@ class Program
         //}
         //Console.ReadLine();
 
-        //***********************************EXERCIZE 2. & 3.****************************************************
+        //***********************************EXERCIZE 2., 3., 4., & 5.****************************************************
 
         //int[] data = { 5, 7, 26, 4, 5, 1, 70, 30, 22, 14, 16, 18 };
 
@@ -66,17 +67,6 @@ class Program
 
         //}
         //Console.ReadLine();
-
-        //****************************** EXERCISE 4. & 5.***************************************************
-
-        //int[] guess = { 2, 3, 4, 5, 6, 10 };
-
-        //for (int i = 0; ;)
-        //{
-        //    Console.WriteLine(guess[0]);
-        //    Console.ReadLine();
-        //}
-
 
         ////**************************************************EXERCIZE 6., 7. & 8.********************************************
         //List<string> planets = new List<string>() {"Mars", "Jupiter","Venus", "Neptune"} ;
@@ -151,26 +141,29 @@ class Program
 
         //************************************************************EXERCIZE 11. *******************************************************
         List<string> clothes = new List<string>() { "Nike", "Pendleton", "Nike", "Adidas", "Patagonia", "Fjallraven", "Fjallraven" };
+        Console.WriteLine("Pick a sport to see if it in the list, if not it will be added to the list");
+        string cloth = Console.ReadLine();
 
-        foreach (string cloth in clothes)
-           
+        if (!clothes.Contains(cloth))
         {
-            Console.WriteLine(cloth);
-            Console.ReadLine();
-            //if (cloth < 2)
-            //{
-            //    Console.WriteLine(cloth);
-            //    Console.ReadLine();
-            //}
-            //else
-            //{
-            //    Console.WriteLine("This metal can not be found in the index.");
-            //    Console.ReadLine();
-            //    continue;
-            //}
+            clothes.Add(cloth);
+            Console.WriteLine("This sport does not exist, but it will get added to the list");
         }
-       
+        else
+        {
+            foreach (string _cloth in clothes)
+            {
+                if (cloth == _cloth)
+                {
+                    Console.WriteLine("This sport aleady exists");
+                }
+            }
+        }
+        Console.ReadLine();
+
     }
 }
+
+
     
 

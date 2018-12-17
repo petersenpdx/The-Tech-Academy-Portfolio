@@ -18,15 +18,14 @@ namespace Optional_Method
     {
         static void Main(string[] args)
         {
-
+            Optional_Method.OptionalClass Class = new OptionalClass();
+            {
             Console.WriteLine("Enter a number for first interger");
             int num1 = Convert.ToInt16(Console.ReadLine());
             Console.WriteLine("Enter a number for second integer (optional)");
             int num2 = Convert.ToInt16(Console.ReadLine());
 
-            Optional_Method.OptionalClass Class = new OptionalClass();
-            {
-                Class.Integer(num1);
+                Class.Integer(num1, num2);
                 Console.ReadLine();
             }
         }
