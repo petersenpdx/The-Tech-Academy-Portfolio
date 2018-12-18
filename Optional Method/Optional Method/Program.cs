@@ -20,12 +20,16 @@ namespace Optional_Method
         {
             Optional_Method.OptionalClass Class = new OptionalClass();
             {
-            Console.WriteLine("Enter a number for first interger");
+            Console.WriteLine("Enter a number for first integer");
             int num1 = Convert.ToInt16(Console.ReadLine());
             Console.WriteLine("Enter a number for second integer (optional)");
-            int num2 = Convert.ToInt16(Console.ReadLine());
+             string  numb2 = Console.ReadLine();
+              if (int.TryParse(numb2, out int num2))
+              {
+                num2 = Convert.ToInt16(numb2);
+              }
 
-                Class.Integer(num1, num2);
+                Class.Integer(num1);
                 Console.ReadLine();
             }
         }
