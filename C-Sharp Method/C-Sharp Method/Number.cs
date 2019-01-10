@@ -22,11 +22,11 @@ namespace C_Sharp_Method
             total = num1 - num2;
             return total;
         }
-        public int Multiply(int num1, int num2)
+         public int Multiply(int num1, int num2)
         {
             int total;
             total = num1 * num2;
             return total;
         }
-    }
+  }
 }

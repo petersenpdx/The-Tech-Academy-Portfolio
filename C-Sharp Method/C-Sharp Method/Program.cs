@@ -28,16 +28,11 @@ namespace C_Sharp_Method
             {
                 Console.WriteLine(Add.Sum(UserNumber, 5));
                 Console.ReadLine();
-            }
-
-            C_Sharp_Method.Number Subtract = new Number();
-            {
-                Console.WriteLine(Subtract.Subtract(UserNumber, 5));
+          
+                Console.WriteLine(Add.Subtract(UserNumber, 5));
                 Console.ReadLine();
-            }
-            C_Sharp_Method.Number Multiply = new Number();
-            {
-                Console.WriteLine(Multiply.Multiply(UserNumber, 5));
+        
+                Console.WriteLine(Add.Multiply(UserNumber, 5));
                 Console.ReadLine();
             }
 
