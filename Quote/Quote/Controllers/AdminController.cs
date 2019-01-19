@@ -9,39 +9,31 @@ namespace Quote.Controllers
 {
     public class AdminController : Controller
     {
+        // GET: Admin
         public ActionResult Index()
         {
             using (QuotesEntities db = new QuotesEntities())
-            {
+            {;
 
-                var quotes = db.Quotes.Where(x => x.Removed == null).ToList();
-                var QuoteVms = new List<QuoteVm>();
-                foreach (var Quotes in QuoteVms)
+                var quotes = db.Quotes;
+                var quoteVms = new List<QuoteVm>();
+                foreach (var Quotes in quoteVms)
                 {
 
                     //var is named "Quotes" rather than "Quote" because the title
                     //of the edmx table couldn't be the same as the parameter "Quote".
-                    var QuoteVm = new QuoteVm();
-                    QuoteVm.Id = Quotes.Id;
-                    QuoteVm.Quote = Convert.ToDouble(Quotes.Quote);
-                    QuoteVm.FirstName = Quotes.FirstName;
-                    QuoteVm.LastName = Quotes.LastName;
-                    QuoteVm.EmailAddress = Quotes.EmailAddress;
-                    QuoteVms.Add(QuoteVm);
+                    var quoteVm = new QuoteVm();
+                    quoteVm.Id = Quotes.Id;
+                    quoteVm.Quote = Convert.ToDouble(Quotes.Quote);
+                    quoteVm.FirstName = Quotes.FirstName;
+                    quoteVm.LastName = Quotes.LastName;
+                    quoteVm.EmailAddress = Quotes.EmailAddress;
+                    quoteVms.Add(quoteVm);
                 }
-                return View(QuoteVms);
+                return View(quoteVms);
             }
-        }
-
-        public ActionResult Remove(int Id)
-        {
-            using (QuotesEntities db = new QuotesEntities())
-            {
-                var quote = db.Quotes.Find(Id);
-                quote.Removed = DateTime.Now;
-                db.SaveChanges();
-            }
-            return RedirectToAction("Index");
         }
     }
 }
+
+

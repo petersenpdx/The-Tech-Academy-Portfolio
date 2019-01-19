@@ -1,138 +1,94 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Quote.Models;
 using Quote.ViewModels;
+using Quote.Models;
 
 namespace Quote.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Quotes;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        //private readonly string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog = master; Integrated Security = True; Connect Timeout = 30; Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+
         public ActionResult Index()
         {
             return View();
         }
 
+        public ActionResult About()
+        {
+            return View();
+        }
+
+        public ActionResult Contact()
+        {
+            return View();
+        }
 
         [HttpPost]
-        public ActionResult Quote(string FirstName, string LastName, string EmailAddress, string DateOfBirth, string CarYear, string CarMake, string CarModel, string SpeedingTickets, string DUI, string Coverage)
+        public ActionResult ProcessQuote(string firstName, string lastName, string emailAddress,
+            DateTime dateOfBirth, int carYear, string carMake, string carModel,
+            bool? DUI, int speedingTickets, bool? coverageType)
         {
-            if (string.IsNullOrEmpty(FirstName) || string.IsNullOrEmpty(LastName) || string.IsNullOrEmpty(EmailAddress) || string.IsNullOrEmpty(DateOfBirth) || string.IsNullOrEmpty(CarYear) || string.IsNullOrEmpty(CarMake) || string.IsNullOrEmpty(CarModel) || string.IsNullOrEmpty(SpeedingTickets) || string.IsNullOrEmpty(DUI) || string.IsNullOrEmpty(Coverage))
-
+            using (QuotesEntities db = new QuotesEntities())
             {
-                return View("~/Views/Shared/Error.cshtml");
-            }
+                var Quotes = new Insuree();
 
-            else
-            {
+                Quotes.FirstName = firstName;
+                Quotes.LastName = lastName;
+                Quotes.EmailAddress = emailAddress;
+                Quotes.DateOfBirth = dateOfBirth;
+                Quotes.CarYear = carYear;
+                Quotes.CarMake = carMake;
+                Quotes.CarModel = carModel;
 
-                DateTime Dob = Convert.ToDateTime(DateOfBirth);
-                int age = 0;
-                age = DateTime.Now.Year - Dob.Year;
-                if (DateTime.Now.DayOfYear < Dob.DayOfYear)
-                    age = age - 1;
-                double total = 50;
-
-
-                bool under25orOver100 = age < 25 || age > 100;
-                if (under25orOver100)
+                if (Request.Form["DUI"] == "Yes")
                 {
-                    total = total + 25;
-                }
-
-                bool under18 = age < 18;
-                if (under18)
-                {
-
-                    total = total + 100;
-                }
-
-                else
-                {
-                    total = total;
-                }
-
-
-                int carYear = Convert.ToInt32(CarYear);
-
-
-                if (carYear < 2000 || carYear > 2015)
-                {
-                    total = total + 25;
-                }
-
-                else
-                {
-                    total = total;
-                }
-
-                if (CarMake == "porsche" || CarMake == "Porsche")
-                {
-                    total = total + 25;
+                    Quotes.DUI = true;
                 }
                 else
                 {
-                    total = total;
+                    Quotes.DUI = false;
                 }
-                if (CarMake == "porsche" && CarModel == "911 Carrera" || CarMake == "Porsche" && CarModel == "911 Carrera")
+
+                Quotes.SpeedingTickets = speedingTickets;
+
+                if (Request.Form["CoverageType"] == "Full Coverage")
                 {
-                    total = total + 25;
+                   Quotes.CoverageType = true;
                 }
                 else
                 {
-                    total = total;
+                    Quotes.CoverageType= false;
                 }
 
-                int tickets = Convert.ToInt32(SpeedingTickets);
+                db.Insurees.Add(Quotes);
+                db.SaveChanges();
 
-                int ticketTotal = tickets * 10;
+                var quoteProcessed = new QuotesProcessed();
+                var quotesProcessed = new List<QuotesProcessed>();
+                int finalQuote = 50;
+                CarQuote.CalculateQuote(Quotes, out finalQuote);
 
-                total = total + ticketTotal;
+                quoteProcessed.FirstName = Quotes.FirstName;
+                quoteProcessed.LastName = Quotes.LastName;
+                quoteProcessed.EmailAddress = Quotes.EmailAddress;
+                quoteProcessed.DateOfBirth = Quotes.DateOfBirth;
+                quoteProcessed.CarYear = Quotes.CarYear;
+                quoteProcessed.CarMake = Quotes.CarMake;
+                quoteProcessed.CarModel = Quotes.CarModel;
+                quoteProcessed.DUI = Quotes.DUI;
+                quoteProcessed.SpeedingTickets = Quotes.SpeedingTickets;
+                quoteProcessed.CoverageType = Quotes.CoverageType;
+                quoteProcessed.FinalQuote = finalQuote;
 
-                bool Dui = DUI == "yes" || DUI == "Yes";
-                if (Dui)
-                {
-                    total = total + (total * .25);
-                }
-                else
-                {
-                    total = total;
-                }
+                quotesProcessed.Add(quoteProcessed);
 
-                bool FullCoverage = Coverage == "full coverage" || Coverage == "full" || Coverage == "Full Coverage" || Coverage == "Full";
-
-                if (FullCoverage)
-                {
-                    total = total + (total * .5);
-                }
-                else
-                {
-                    total = total;
-                }
-
-                double Quote = total;
-
-                ViewBag.Quote = "$" + Quote;
-
-                using (QuotesEntities db = new QuotesEntities())
-                {
-                    var Quotes = new Quotes();
-                    Quotes.FirstName = FirstName;
-                    Quotes.LastName = LastName;
-                    Quotes.EmailAddress = EmailAddress;
-                    string Quote1 = Convert.ToString(Quote);
-                    Quotes.Quote = Quote1;
-
-                    db.Quotes.Add(Quotes);
-                    db.SaveChanges();
-                }
-                return View("Success");
+                return View("YourQuote", quotesProcessed);
             }
         }
+
     }
 }

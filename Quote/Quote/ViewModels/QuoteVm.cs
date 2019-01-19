@@ -14,3 +14,4 @@ namespace Quote.ViewModels
         public double Quote { get; set; }
     }
 }
+

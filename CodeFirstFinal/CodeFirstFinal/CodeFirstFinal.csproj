@@ -62,6 +62,10 @@
     <Compile Include="Migrations\201901110551430_ChangeDisplayName.Designer.cs">
       <DependentUpon>201901110551430_ChangeDisplayName.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901190235188_Changed var blog.cs" />
+    <Compile Include="Migrations\201901190235188_Changed var blog.Designer.cs">
+      <DependentUpon>201901190235188_Changed var blog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -79,6 +83,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901110551430_ChangeDisplayName.resx">
       <DependentUpon>201901110551430_ChangeDisplayName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901190235188_Changed var blog.resx">
+      <DependentUpon>201901190235188_Changed var blog.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

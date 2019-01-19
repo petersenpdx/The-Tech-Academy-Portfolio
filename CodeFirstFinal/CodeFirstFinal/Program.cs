@@ -19,7 +19,7 @@ namespace CodeFirstFinal
                 Console.Write("Enter a name for a new Error category:");
                 var name = Console.ReadLine();
 
-                var blog = new Category { Name = name };
+                var  category = new Category { Name = name };
                 db.Categories.Add(category);
                 db.SaveChanges();
 
@@ -36,7 +36,7 @@ namespace CodeFirstFinal
     }
     public class Category
     {
-        public int CategoryId { get; set; }
+        public int? CategoryId { get; set; }
         public string Name { get; set; }
         public string Url { get; set; }
 
@@ -45,11 +45,11 @@ namespace CodeFirstFinal
 
     public class Error
     {
-        public int ErrorId { get; set; }
+        public int? ErrorId { get; set; }
         public string Title { get; set; }
         public string Content { get; set; }
 
-        public int CategoryId { get; set; }
+        public int? CategoryId { get; set; }
         public virtual Category Category { get; set; }
     }
     public class User

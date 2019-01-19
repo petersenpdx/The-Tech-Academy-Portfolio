@@ -26,5 +26,6 @@ namespace CarInsurance
         public int SpeedingTickets { get; set; }
         public bool CoverageType { get; set; }
         public decimal Quote { get; set; }
+        public object QuoteTotal { get; internal set; }
     }
 }

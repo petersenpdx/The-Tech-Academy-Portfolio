@@ -1,167 +1,183 @@
-﻿using System;
+﻿using CarInsurance;
+using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
 using System.Linq;
-using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using CarInsurance;
 
 namespace CarInsurance.Controllers
 {
     public class InsureeController : Controller
     {
-        private InsuranceEntities2 db = new InsuranceEntities2();
+        private InsuranceEntities2 _db = new InsuranceEntities2();
 
-        // GET: Insuree
+
+        Insuree c = new Insuree();
+
+        // GET: Home
         public ActionResult Index()
         {
-            return View(db.Insurees.ToList());
+            return View(_db.Insurees.ToList());
         }
 
-        // GET: Insuree/Details/5
-        public ActionResult Details(int? id)
+        // ADMIN page
+        public ActionResult Admin()
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Insuree insuree = db.Insurees.Find(id);
-            if (insuree == null)
-            {
-                return HttpNotFound();
-            }
-            return View(insuree);
+            return View(_db.Insurees.ToList());
         }
 
-        // GET: Insuree/Create
+        // CD: built nav to success
+        public ActionResult Success()
+        {
+            return View(_db.Insurees.OrderByDescending(x => x.QuoteTotal).Take(1).ToList());
+        }
+
+        // GET: Home/Details/5
+        public ActionResult Details(int id)
+        {
+            return View();
+        }
+
+        // GET: Home/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Insuree/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+
+
+        // POST: Home/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,FirstName,LastName,EmailAddress,DateOfBirth,CarYear,CarMake,CarModel,DUI,SpeedingTickets,CoverageType,Quote")] Insuree insuree)
+        public ActionResult Create([Bind(Exclude = "Id")] Insuree carToCreate)
         {
-            if (ModelState.IsValid)
-            {
-                insuree.Quote = 50;
-                var age = DateTime.Now.Year - insuree.DateOfBirth.Year;
+            if (!ModelState.IsValid)
+                return View();
 
-                if (age < 25 && age > 18)
-                {
-                    insuree.Quote = insuree.Quote + 25;
-                }
-                else if (age < 18)
-                {
-                    insuree.Quote = insuree.Quote + 100;
-                }
-                else if (age > 100)
-                {
-                    insuree.Quote = insuree.Quote + 25;
-                }
+            SetProps(carToCreate); // CD: ensure props are set
+            carToCreate.QuoteTotal = Quote(); // CD: set gen'd quote
 
-                if (insuree.CarYear >= 2015 || insuree.CarYear <= 2000)
-                {
-                    insuree.Quote = insuree.Quote + 25;
-                }
+            _db.Insurees.Add(carToCreate);
+            _db.SaveChanges();
 
-                if (insuree.CarMake == "Porche")
-                {
-                    insuree.Quote = insuree.Quote + 25;
-                }
-                else if (insuree.CarMake == "Porche" && insuree.CarModel == "911 Carrera")
-                {
-                    insuree.Quote = insuree.Quote + 50;
-                }
+            return View("Success", _db.Insurees.OrderByDescending(x => x.QuoteTotal).Take(1).ToList()); // CD nav to success
+            //return RedirectToAction("Index"); // CD removed
 
-                if (insuree.DUI == true)
-                {
-                    insuree.Quote = insuree.Quote / 0.75m;
-                }
-
-                if (insuree.CoverageType == true)
-                {
-                    insuree.Quote = insuree.Quote / 0.5m;
-                }
-
-                db.Insurees.Add(insuree);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-
-            }
-            return View(insuree);
         }
-           
-            // GET: Insuree/Edit/5
-        public ActionResult Edit(int? id)
+
+        private void SetProps(Insuree carToCreate)
         {
-            if (id == null)
+            throw new NotImplementedException();
+        }
+
+
+
+        //Function to create Quote Calculation
+        decimal quoteTotal = 50; // put in global
+
+        public decimal Quote()
+        {
+            if (DateTime.Now.Year - c.DateOfBirth.Year > 25)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                quoteTotal = quoteTotal + 25;
             }
-            Insuree insuree = db.Insurees.Find(id);
-            if (insuree == null)
+            if (DateTime.Now.Year - c.DateOfBirth.Year < 18)
+            {
+                quoteTotal = quoteTotal + 100;
+            }
+            if (DateTime.Now.Year - c.DateOfBirth.Year > 100)
+            {
+                quoteTotal = quoteTotal + 25;
+            }
+
+            if (c.CarYear < 2000)
+            {
+                quoteTotal = quoteTotal + 25;
+            }
+            if (c.CarYear > 2015)
+            {
+                quoteTotal = quoteTotal + 25;
+            }
+            if (c.CarMake.ToLower() == "porsche")
+            {
+                quoteTotal = quoteTotal + 25;
+            }
+            if (c.CarMake.ToLower() == "porsche" && c.CarModel.ToLower() == "911 carrera")
+            {
+                quoteTotal = quoteTotal + 25;
+            }
+            if (c.SpeedingTickets > 4)
+            {
+                quoteTotal = quoteTotal + (c.SpeedingTickets * 10);
+            }
+            if (c.DUI == true)
+            {
+                quoteTotal = quoteTotal + (Decimal.Multiply(quoteTotal, .25M));
+            }
+            if (c.CoverageType == true) // CD: fixed issue with calc on full (was converting ToLower() but comapring to Full)
+            {
+                quoteTotal = quoteTotal + (Decimal.Multiply(quoteTotal, .25M));
+            }
+
+            return quoteTotal; // CD return val
+        }
+
+        // GET: Home/Edit/5
+        public ActionResult Edit(int id)
+        {
+            var carToEdit = (from c in _db.Insurees
+                             where c.Id == id
+                             select c).First();
+
+            return View(carToEdit);
+        }
+
+
+
+        // POST: Home/Edit/5
+        [HttpPost]
+        public ActionResult Edit(Insuree carToEdit)
+        {
+            var originalCar = (from c in _db.Insurees
+                               where c.Id == carToEdit.Id
+                               select c).First();
+            if (!ModelState.IsValid)
+                return View(originalCar);
+
+            _db.Entry(originalCar).CurrentValues.SetValues(carToEdit);
+            _db.SaveChanges();
+
+            return RedirectToAction("Index");
+
+        }
+
+        // GET: Home/Delete/5
+        public ActionResult Delete(int id)
+        {
+            Insuree deletedCar = _db.Insurees.Find(id);
+            if (deletedCar == null)
             {
                 return HttpNotFound();
             }
-            return View(insuree);
+            return View(deletedCar);
+
+
         }
 
-        // POST: Insuree/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,EmailAddress,DateOfBirth,CarYear,CarMake,CarModel,DUI,SpeedingTickets,CoverageType,Quote")] Insuree insuree)
-        {
-               if (ModelState.IsValid)
-                {
-                    db.Entry(insuree).State = EntityState.Modified;
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-                }
-                return View(insuree);
-            }
-
-            // GET: Insuree/Delete/5
-            public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Insuree insuree = db.Insurees.Find(id);
-            if (insuree == null)
-            {
-                return HttpNotFound();
-            }
-            return View(insuree);
-        }
-
-        // POST: Insuree/Delete/5
+        // POST: Home/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Insuree insuree = db.Insurees.Find(id);
-            db.Insurees.Remove(insuree);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+            Insuree deletedCar = _db.Insurees.Find(id);
+            _db.Insurees.Remove(deletedCar);
+            _db.SaveChanges();
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
+
+
+            return RedirectToAction("Index");
+
+
+
         }
     }
 }
