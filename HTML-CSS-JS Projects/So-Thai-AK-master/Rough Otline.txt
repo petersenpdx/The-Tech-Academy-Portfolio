@@ -1,0 +1,10 @@
+Thai food cart, one page static site with simple animation.
+
+Name of food cart
+One line slogan
+Menue - interactive pictures
+Contact/Booking form
+
+
+HTML Refrence: https://www.w3schools.com/tags/
+HTML Elements: https://developer.mozilla.org/en-US/docs/Web/HTML/Element
