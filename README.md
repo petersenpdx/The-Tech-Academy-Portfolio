@@ -21,10 +21,10 @@ From October 2018 to January 2019 I studied at The Tech Academy, a software deve
 #### [Webforms & Basics] (https://github.com/petersenpdx/)  (C#, HTML)
 #### Basics
 
-* Abstract Class &emsp;&emsp;&emsp; * Anonymous	Method &emsp; * Boolean Logic &emsp; * Branching - Shipping Quote
-* DateTime Stamp &emsp;&emsp; * Do While Loops &emsp; * Enume &emsp;* Inheritance						
-* Lambda Expression &emsp; * Math & Comparison Operators &emsp;	* Method Game &emsp; * Struct
-* Number Array &emsp;&emsp;&emsp; * Overload &emsp; * Stream Writer IO &emsp; * Constructors 
+* Abstract Class &emsp;&emsp;&emsp; * Anonymous	Method &emsp;&emsp;  * Boolean Logic &emsp; * Branching - Shipping Quote
+* DateTime Stamp &emsp;&emsp; * Do While Loops &emsp;&emsp;&emsp;&emsp;  * Enume &emsp;* Inheritance						
+* Lambda Expression &emsp; * Comparison Operators &emsp;	* Method Game &emsp; * Struct
+* Number Array &emsp;&emsp;&emsp; * Overload &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;  * Stream Writer IO &emsp; * Constructors 
 * Void
 
 #### Webforms
