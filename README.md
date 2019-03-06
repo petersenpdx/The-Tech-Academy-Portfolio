@@ -28,8 +28,8 @@ From October 2018 to January 2019 I studied at The Tech Academy, a software deve
 * Void
 
 #### Webforms
-* Calculator 						  * Calendar - Count Days				* Flight Prices 				* Contactor Schedule
-* Contractor Performance  * Shipping (Advanced) 				* Darts						    * War Cards		
+* Calculator &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; * Calendar - Count Days &emsp;&emsp; * Flight Prices &emsp; * Contactor Schedule
+* Contractor Performance &emsp; * Shipping (Advanced) &emsp;&emsp;&emsp; * Darts &emsp;&emsp;&emsp;&emsp; * War Cards		
 
 ### ASP.NET MVC & Code First
 * [Car Insurance](https://github.com/petersenpdx/The-Tech-Academy-Portfolio) (C#, Razor, Entity Framework)
