@@ -1,0 +1,17 @@
+C:\Users\peter\OneDrive\Documents\GitHub\Tech-Academy-VisualStudio-Drill\CodeFirstFinal\CodeFirstFinal\obj\Debug\CodeFirstFinal.csprojAssemblyReference.cache
+C:\Users\peter\OneDrive\Documents\GitHub\Tech-Academy-VisualStudio-Drill\CodeFirstFinal\CodeFirstFinal\obj\Debug\CodeFirstFinal.csproj.CoreCompileInputs.cache
+C:\Users\peter\OneDrive\Documents\GitHub\Tech-Academy-VisualStudio-Drill\CodeFirstFinal\CodeFirstFinal\bin\Debug\CodeFirstFinal.exe.config
+C:\Users\peter\OneDrive\Documents\GitHub\Tech-Academy-VisualStudio-Drill\CodeFirstFinal\CodeFirstFinal\bin\Debug\CodeFirstFinal.exe
+C:\Users\peter\OneDrive\Documents\GitHub\Tech-Academy-VisualStudio-Drill\CodeFirstFinal\CodeFirstFinal\bin\Debug\CodeFirstFinal.pdb
+C:\Users\peter\OneDrive\Documents\GitHub\Tech-Academy-VisualStudio-Drill\CodeFirstFinal\CodeFirstFinal\bin\Debug\EntityFramework.dll
+C:\Users\peter\OneDrive\Documents\GitHub\Tech-Academy-VisualStudio-Drill\CodeFirstFinal\CodeFirstFinal\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\peter\OneDrive\Documents\GitHub\Tech-Academy-VisualStudio-Drill\CodeFirstFinal\CodeFirstFinal\bin\Debug\EntityFramework.xml
+C:\Users\peter\OneDrive\Documents\GitHub\Tech-Academy-VisualStudio-Drill\CodeFirstFinal\CodeFirstFinal\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\peter\OneDrive\Documents\GitHub\Tech-Academy-VisualStudio-Drill\CodeFirstFinal\CodeFirstFinal\obj\Debug\CodeFirstFinal.csproj.CopyComplete
+C:\Users\peter\OneDrive\Documents\GitHub\Tech-Academy-VisualStudio-Drill\CodeFirstFinal\CodeFirstFinal\obj\Debug\CodeFirstFinal.exe
+C:\Users\peter\OneDrive\Documents\GitHub\Tech-Academy-VisualStudio-Drill\CodeFirstFinal\CodeFirstFinal\obj\Debug\CodeFirstFinal.pdb
+C:\Users\peter\OneDrive\Documents\GitHub\Tech-Academy-VisualStudio-Drill\CodeFirstFinal\CodeFirstFinal\obj\Debug\CodeFirstFinal.Migrations.AddUrl.resources
+C:\Users\peter\OneDrive\Documents\GitHub\Tech-Academy-VisualStudio-Drill\CodeFirstFinal\CodeFirstFinal\obj\Debug\CodeFirstFinal.csproj.GenerateResource.cache
+C:\Users\peter\OneDrive\Documents\GitHub\Tech-Academy-VisualStudio-Drill\CodeFirstFinal\CodeFirstFinal\obj\Debug\CodeFirstFinal.Migrations.AddUser.resources
+C:\Users\peter\OneDrive\Documents\GitHub\Tech-Academy-VisualStudio-Drill\CodeFirstFinal\CodeFirstFinal\obj\Debug\CodeFirstFinal.Migrations.ChangeDisplayName.resources
+C:\Users\peter\OneDrive\Documents\GitHub\Tech-Academy-VisualStudio-Drill\CodeFirstFinal\CodeFirstFinal\obj\Debug\CodeFirstFinal.Migrations.Changedvarblog.resources
