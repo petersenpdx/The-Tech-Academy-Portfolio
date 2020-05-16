@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2050
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "C-Sharp Methodes Game", "C-Sharp Methodes Game.csproj", "{739DF0BF-769B-4CAF-8282-8B7098528A9B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{739DF0BF-769B-4CAF-8282-8B7098528A9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{739DF0BF-769B-4CAF-8282-8B7098528A9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{739DF0BF-769B-4CAF-8282-8B7098528A9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{739DF0BF-769B-4CAF-8282-8B7098528A9B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F2AF9749-3119-4875-A707-6B5930813ABC}
+	EndGlobalSection
+EndGlobal
