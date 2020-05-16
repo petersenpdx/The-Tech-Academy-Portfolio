@@ -1,6 +1,0 @@
-C:\Users\peter\OneDrive\Documents\GitHub\Tech-Academy-VisualStudio-Drill\TwentyOneGame\Casino\bin\Debug\Casino.dll
-C:\Users\peter\OneDrive\Documents\GitHub\Tech-Academy-VisualStudio-Drill\TwentyOneGame\Casino\bin\Debug\Casino.pdb
-C:\Users\peter\OneDrive\Documents\GitHub\Tech-Academy-VisualStudio-Drill\TwentyOneGame\Casino\obj\Debug\Casino.csprojAssemblyReference.cache
-C:\Users\peter\OneDrive\Documents\GitHub\Tech-Academy-VisualStudio-Drill\TwentyOneGame\Casino\obj\Debug\Casino.csproj.CoreCompileInputs.cache
-C:\Users\peter\OneDrive\Documents\GitHub\Tech-Academy-VisualStudio-Drill\TwentyOneGame\Casino\obj\Debug\Casino.dll
-C:\Users\peter\OneDrive\Documents\GitHub\Tech-Academy-VisualStudio-Drill\TwentyOneGame\Casino\obj\Debug\Casino.pdb
